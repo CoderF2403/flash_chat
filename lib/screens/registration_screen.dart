@@ -116,7 +116,8 @@ class _RegistrationScreenState extends State<RegistrationScreen>
                     Navigator.pushNamed(context, ChatScreen.id);
                     setState(() {
                       _saving = false;
-                    });                 } on FirebaseAuthException catch (e) {
+                    });
+                  } on FirebaseAuthException catch (e) {
                     if (e.code == 'weak-password') {
                       print('The password provided is too weak.');
                     } else if (e.code == 'email-already-in-use') {

@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
-  MessageBubble({required this.sender, required this.message, required this.isMe});
+  MessageBubble({required this.sender, required this.message, required this.isMe, required this.time});
 
   final String sender;
   final String message;
+  final Timestamp time;
   final bool isMe;
 
   @override
@@ -41,7 +43,7 @@ class MessageBubble extends StatelessWidget {
             ),
           ),
           Text(
-              sender,
+              '$sender',
             style: TextStyle(
               color: Colors.white,
               fontSize: 10.0,

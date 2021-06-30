@@ -21,13 +21,16 @@ class MessageBubbleStream extends StatelessWidget {
             Map<String, dynamic> messageData = message.data() as Map<String, dynamic>;
             final messageSender = messageData['sender'];
             final messageReceived = messageData['textmessage'];
+            final messageTime = messageData["time"];
             final loggedInUser = _currentUser!.email;
             final messageToShow = MessageBubble(
                 sender: messageSender ,
                 message: messageReceived,
+                time: messageTime,
                 isMe: loggedInUser == messageSender,
             );
             messagesList.add(messageToShow);
+            messagesList.sort((a , b ) => b.time.compareTo(a.time));
           }
           return Expanded(
             child:ListView(
